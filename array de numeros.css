@@ -1,0 +1,83 @@
+﻿using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("1. Contador de Vocales");
+        string frase1 = Console.ReadLine().ToLower();
+        int contador = 0;
+
+        foreach (char c in frase1)
+        {
+            if ("aeiou".Contains(c))
+            {
+                contador++;
+            }
+        }
+
+        Console.WriteLine("Cantidad de vocales: " + contador);
+
+        Console.WriteLine("\n2. Inversion de Cadena");
+        string palabra = Console.ReadLine();
+        char[] letras = palabra.ToCharArray();
+        Array.Reverse(letras);
+
+        Console.WriteLine(new string(letras));
+
+        Console.WriteLine("\n3. Verificador de Palindromos");
+        string frase2 = Console.ReadLine().ToLower().Replace(" ", "");
+        char[] invertida = frase2.ToCharArray();
+        Array.Reverse(invertida);
+
+        string resultado = new string(invertida);
+
+        if (frase2 == resultado)
+        {
+            Console.WriteLine("Es un palindromo");
+        }
+        else
+        {
+            Console.WriteLine("No es un palindromo");
+        }
+
+        Console.WriteLine("\n4. Cifrado Cesar Basico");
+        string texto = Console.ReadLine().ToLower();
+        string cifrado = "";
+
+        foreach (char c in texto)
+        {
+            if (c == 'z')
+            {
+                cifrado += 'a';
+            }
+            else if (char.IsLetter(c))
+            {
+                cifrado += (char)(c + 1);
+            }
+            else
+            {
+                cifrado += c;
+            }
+        }
+
+        Console.WriteLine(cifrado);
+
+        Console.WriteLine("\n5. Extraccion de Dominio");
+        string correo = Console.ReadLine();
+        int posicion = correo.IndexOf('@');
+
+        Console.WriteLine(correo.Substring(posicion + 1));
+
+        Console.WriteLine("\n6. Capitalizador de Titulos");
+        string frase3 = Console.ReadLine().ToLower();
+        string[] palabras = frase3.Split(' ');
+
+        for (int i = 0; i < palabras.Length; i++)
+        {
+            palabras[i] = char.ToUpper(palabras[i][0]) + palabras[i].Substring(1);
+        }
+
+        Console.WriteLine(string.Join(" ", palabras));
+    }
+}
